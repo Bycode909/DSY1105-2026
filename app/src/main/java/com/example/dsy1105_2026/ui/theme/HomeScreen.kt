@@ -8,12 +8,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,37 +27,48 @@ import com.example.dsy1105_2026.R
 @Composable
 fun HomeScreem(){
     //scaffolf pantalla basica
+    val colorScheme = darkColorScheme(
+        primary = Color(0xFFFA4757),
+        onPrimary = Color(0xFFFFFFFF),
+        onSurface = Color.White
+    )
+    MaterialTheme(
+        colorScheme = colorScheme
+    ) {
 
-    Scaffold (
-        topBar = {
-            TopAppBar(title = { Text("Mi primer app") }) }
+        Scaffold(
+            topBar = {
+                TopAppBar(title = { Text("Mi primer app",
+                    color = MaterialTheme.colorScheme.onPrimary
+                )}
+                )}
 
-    ){ innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding)
-                .fillMaxSize()
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ){
-
-            Text(text = "!!!!!!!!!!!! bienvenido !!!!!!!!!!!!!!!")
-            Button(onClick = {}) {
-                Text(text = "presioname!")
-
-            }
-            Image(
-                painter = painterResource(id = R.drawable.logoduoc),
-                contentDescription = "Logo app",
+        ) { innerPadding ->
+            Column(
                 modifier = Modifier
+                    .padding(innerPadding)
                     .fillMaxSize()
-                    .height(150.dp),
-                contentScale = ContentScale.Fit
-            )
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.spacedBy(20.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Text(text = "!!!!!!!!!!!! bienvenido !!!!!!!!!!!!!!!")
+                Button(onClick = {}) {
+                    Text(text = "presioname!")
+
+                }
+                Image(
+                    painter = painterResource(id = R.drawable.logoduoc),
+                    contentDescription = "Logo app",
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .height(150.dp),
+                    contentScale = ContentScale.Fit
+                )
+            }
         }
     }
-
 }
 
 @Preview(showBackground = true)
